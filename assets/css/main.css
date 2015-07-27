@@ -2294,6 +2294,9 @@
 
 		.main.fullscreen {
 			height: 100%;
+			display: block;
+			overflow: auto; 
+			
 		}
 
 		.main.style1 {
@@ -3268,6 +3271,8 @@
 
 			.main.style2 .content {
 				width: 40%;
+				overflow: auto;
+				
 			}
 
 			.main.style2.right .content {
