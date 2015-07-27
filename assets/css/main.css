@@ -2294,8 +2294,6 @@
 
 		.main.fullscreen {
 			height: 100%;
-			display: block;
-			overflow: auto; 
 			
 		}
 
