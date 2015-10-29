@@ -4,7 +4,6 @@
 <html>
 	<head>
 		<title>Ransom Wedding! </title>
-
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -19,6 +18,7 @@
 
 				<!-- Logo -->
 					<h1 id="logo">Ransom Wedding </h1>
+					
 
     <!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> -->
     <!--<script type="text/javascript" src="jquery.downCount.js"></script>-->
@@ -74,6 +74,7 @@ PHOENIX
 					<footer>
 						<a href="#ourstory" class="button style2 down">More</a>
 					</footer>
+					
 				</div>
 			</section>
 
@@ -171,16 +172,25 @@ PHOENIX
 			<section id="rsvp" class="main style3 primary">
 				<div class="content container">
 					<header>
-						<h2>RSVP Coming Soon</h2>
+						<h2>RSVP</h2>
 					</header>
-									<a href="#accomodations" class="button style2 down anchored">Next</a>
-								</div>
-							</section>
+									
+								<!--</div>
+							</section>-->
 
 
 
-					<!-- rsvp Form -->
-								<!-- <form method="post" action="#">
+					 <!--rsvp Form -->
+					 <div ng-app="app">
+						<div ng-controller="WeddingCtrl"></div>
+								<form ng-hide="userFound">
+									<h4>Please input the address your invitation was sent to</h4>
+									Invitation Address: <input type="text" ng-model="user.address" /> <br/>
+									address: {{user | json}}
+									<br />
+									<input type="submit" value="Click It!" ng-click = "reset()" ng-show="user.address" />
+								</form>
+								 <form method="post" ng-show="userFound">
 									<div class="row 50%">
 										<div class="6u 12u(mobile)"><input type="text" name="name" placeholder="Name" /></div>
 										<div class="6u 12u(mobile)"><input type="email" name="email" placeholder="Email" /></div>
@@ -197,9 +207,11 @@ PHOENIX
 									</div>
 								</form>
 
+
 						</div>
 					</div>
-				</section> -->
+											<a href="#accomodations" class="button style2 down anchored">Next</a>
+				</section> 
 
 <!-- accomodations -->
 			<section id="accomodations" class="main style2 right dark fullscreen">
@@ -208,7 +220,7 @@ PHOENIX
 					<h3>Hilton Garden Inn Phoenix</h3>
 					<p>Ask for the Ransom Wedding block of rooms. <br>Nightly Rate: $109 + taxes <br>Includes free shuttle service to and from venue. <br>Must be booked by December 22nd.</p>
 					<!-- <iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d13312.794930585907!2d-112.08180789081541!3d33.47017635821159!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e3!4m5!1s0x872b125defe92be9%3A0x937c89d985b7fb57!2sHilton+Phoenix+Suites%2C+10+East+Thomas+Road%2C+Phoenix%2C+AZ+85012!3m2!1d33.480647999999995!2d-112.07215699999999!4m5!1s0x872b12163b8ae15b%3A0x3108a84fb23cb526!2sThe+Monorchid%2C+214+East+Roosevelt+Street%2C+Phoenix%2C+AZ+85004!3m2!1d33.458992699999996!2d-112.07063989999999!5e0!3m2!1sen!2sus!4v1436639417083" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe> -->
-					<iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d26623.923749535974!2d-112.09079520580812!3d33.4755989233079!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x872b12f39a0dc757%3A0x77225a3f72960548!2sHilton+Garden+Inn+Phoenix+Midtown%2C+4000+North+Central+Avenue%2C+Phoenix%2C+AZ+85012!3m2!1d33.492513599999995!2d-112.0752555!4m5!1s0x872b12163b8ae15b%3A0x3108a84fb23cb526!2sMonorchid+Creative+Studios%2F+Event%2F+Wedding+Venue%2C+East+Roosevelt+Street%2C+Phoenix%2C+AZ!3m2!1d33.458992699999996!2d-112.07063989999999!5e0!3m2!1sen!2sus!4v1437281620232" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+					<!--<iframe src="https://www.google.com/maps/embed?pb=!1m28!1m12!1m3!1d26623.923749535974!2d-112.09079520580812!3d33.4755989233079!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m13!3e0!4m5!1s0x872b12f39a0dc757%3A0x77225a3f72960548!2sHilton+Garden+Inn+Phoenix+Midtown%2C+4000+North+Central+Avenue%2C+Phoenix%2C+AZ+85012!3m2!1d33.492513599999995!2d-112.0752555!4m5!1s0x872b12163b8ae15b%3A0x3108a84fb23cb526!2sMonorchid+Creative+Studios%2F+Event%2F+Wedding+Venue%2C+East+Roosevelt+Street%2C+Phoenix%2C+AZ!3m2!1d33.458992699999996!2d-112.07063989999999!5e0!3m2!1sen!2sus!4v1437281620232" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>-->
 				</div>
 				<a href="#registry" class="button style2 down anchored">Next</a>
 			</section>
@@ -230,10 +242,15 @@ PHOENIX
 				<div class="content box style2 phoenix">
 					<header>
 						<h2>Welcome to our city!</h2>
+						
 					</header>
-					<p><a href="http://www.azscience.org/">Science Museum</a> <br>
+					<p>
+						<h4 style="text-decoration:underline">
+							<a href="https://www.google.com/search?rls=en&q=best+things+to+do+in+phoenix&ie=UTF-8&oe=UTF-8">Stuff to do in Phoenix</a><br>
+						<a href="http://www.azscience.org/">Science Museum</a> <br>
 						<a href="http://www.phxart.org/">Art Museum</a><br>
 						<a href="http://arizonahiking.org/index.php/jreviews-directory/jreviews-listings-module-5">Hiking</a>
+						<h4>
 </p>
 				</div>
 
@@ -278,6 +295,11 @@ PHOENIX
             alert('WOOT WOOT, done!');
         });
     </script>
+	
+<script src="assets/js/angular/angular.js"></script>
+<script src="assets/js/angular/wedding.controller.js"></script>
+      
+	
 
 
 	</body>
