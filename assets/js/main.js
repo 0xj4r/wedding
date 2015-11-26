@@ -10,6 +10,7 @@
 		mobile: '(max-width: 736px)',
 		mobilenarrow: '(max-width: 480px)',
 	});
+
 $.fn.downCount = function (options, callback) {
         var settings = $.extend({
                 date: null,
@@ -40,11 +41,11 @@ $.fn.downCount = function (options, callback) {
 
             // turn date to utc
             var utc = date.getTime() + (date.getTimezoneOffset() * 60000);
-            console.log(utc);
-            console.log("Timezone : " + date.getTimezoneOffset());
+            //console.log(utc);
+            //console.log("Timezone : " + date.getTimezoneOffset());
             // set new Date object
             var new_date = new Date(utc + (3600000*settings.offset)); 
-            console.log(new_date);
+            //console.log(new_date);
 
 
             return new_date;
@@ -295,6 +296,7 @@ $.fn.downCount = function (options, callback) {
 
 				};
 
+				
 				var off = function() {
 
 					// Generic sections.
