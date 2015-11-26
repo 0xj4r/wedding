@@ -9,7 +9,7 @@ angular.module('app', [])
   $scope.testFamily =  []; 
   $scope.rsvpSuccess = false; 
 
-  var serverAddress = 'http://127.0.0.1:8080'; //'http://wedding-snagaflight.rhcloud.com';
+  var serverAddress = 'http://wedding-snagaflight.rhcloud.com';
   
   $scope.submitRsvp = function(family) {
     $http({
