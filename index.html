@@ -163,7 +163,7 @@ PHOENIX
 				<div ng-controller="WeddingCtrl as ctrl" class="content container">
 						<h2>RSVP</h2>
 						<div>
-							<form ng-hide="userFound">
+							<form ng-show="!userFound && !hasGuestList">
 								<h4>Please input the street number of the address your invitation was sent to</h4> 
 								<input type="text" ng-model="user.address" style="width:50%; margin:auto;" placeholder="ex. Enter '123' if your address was '123 Melon St.'"/>
 								</br>
@@ -178,8 +178,23 @@ PHOENIX
 											<input type="radio" ng-model="guest.isAttending" ng-value="false" ng-required="!guest.isAttending">Not Attending</input>
 									</div>
 								</div>	
-								<input type="submit" value="RSVP" style=" font-size:100%; margin:auto;" ng-click="submitRsvp(testFamily)" ng-show="userFound && !rsvpSuccess"/>
+								<input type="submit" value="RSVP" style=" font-size:100%; margin:auto;" ng-click="submitRsvp(testFamily)" ng-show="userFound && !rsvpSuccess && !hasGuestList"/>
 							</form>
+							<div ng-show="hasGuestList">
+							<table >
+								<tr style="font-weight: bold;"><td>Name</td><td>Attending</td></tr>
+								<tr ng-repeat="guest in guestList">
+									<td>{{ guest.name }}</td>
+									<td>{{ guest.isAttending }}</td>
+								</tr>
+								<tr>
+									<td style="font-weight:bold;"> Still Need to RSVP</td>
+								</tr>
+								<tr ng-repeat="person in needToRsvpList">
+									<td>{{ person.name }}</td>
+								</tr>
+							</table> 
+							</div> 
 							<div ng-show="rsvpSuccess">
 								</br>
 								<h2 style="color:green; padding:25px">Thanks for your RSVP!</h2>
@@ -208,7 +223,7 @@ PHOENIX
 				</div>
 
 
->>>>>>> b1bf7d875cf73d4234874db705bfca781973472c-->
+
 		</div>
 		<a href="#registry" class="button style2 down anchored">Next</a>
 	</section>

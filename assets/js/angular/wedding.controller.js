@@ -1,6 +1,6 @@
 'use strict';
 
-// wedding controller
+
 angular.module('app', [])
 .controller('WeddingCtrl',  function($scope, $http) {
   $scope.user = {}; 
@@ -8,7 +8,9 @@ angular.module('app', [])
   $scope.guests = []; 
   $scope.testFamily =  []; 
   $scope.rsvpSuccess = false; 
-
+  $scope.guestList = [];
+  $scope.needToRsvpList = []; 
+  $scope.hasGuestList = false;  
   var serverAddress = 'http://wedding-snagaflight.rhcloud.com';
   
   $scope.submitRsvp = function(family) {
@@ -30,26 +32,60 @@ angular.module('app', [])
   }; 
   
   $scope.findFamily = function(user) {
-      $http({
-        url: serverAddress + '/guests', 
-        method: 'GET', 
-        params: user
-      }).success(function(data) {
-        if (data.length > 0) {
-        $scope.testFamily = data; 
-        $scope.userFound = true; 
-        }
-        else {
+      if (user.address === "310123") {
+        $http({
+          url: serverAddress + '/guestList', 
+          method: 'GET', 
+          params: user
+        }).success(function(data) { 
+          $scope.hasGuestList = true; 
+          var attendingList =[]; 
+          var notAttendingList = []; 
+          
+          data.forEach(function(ele) {
+            if(ele.isAttending) {
+                              console.log("attending");
+              attendingList.push(ele); 
+            }
+            else {
+              if (ele.rsvp) {
+                 console.log("not")
+                notAttendingList.push(ele)
+              }
+               else {
+                 console.log("need rsvp");
+                $scope.needToRsvpList.push(ele);
+               }
+            }
+              
+          }); 
+
+          $scope.guestList = $scope.guestList.concat(attendingList); 
+          $scope.guestList = $scope.guestList.concat(notAttendingList);
+        }); 
+      }
+      else {
+        $http({
+          url: serverAddress + '/guests', 
+          method: 'GET', 
+          params: user
+        }).success(function(data) {
+          if (data.length > 0) {
+          $scope.testFamily = data; 
+          $scope.userFound = true; 
+          }
+          else {
+            $scope.userFound = false; 
+            alert('Could not locate your party, please try again');
+            $scope.user.address = ''; 
+          }
+        }).error(function(data) {
           $scope.userFound = false; 
-          alert('Could not locate your party, please try again');
+          alert('There was a problem handling your rsvp, please try again.'); 
           $scope.user.address = ''; 
-        }
-      }).error(function(data) {
-        $scope.userFound = false; 
-        alert('There was a problem handling your rsvp, please try again.'); 
-        $scope.user.address = ''; 
-      });
-  }; 
+        });
+    }; 
+  }
   
   
   
